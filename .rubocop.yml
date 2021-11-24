@@ -1,16 +1,21 @@
+inherit_from: .rubocop_todo.yml
+
 # Copied from bundler :)
 
+require: rubocop-performance
+
 AllCops:
-  TargetRubyVersion: 1.9
+  TargetRubyVersion: 3.0
   Exclude:
     - tmp/**/*
   DisplayCopNames: true
+  NewCops: enable
 
 # They are idiomatic
 Lint/AssignmentInCondition:
   Enabled: false
 
-Lint/EndAlignment:
+Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
   AutoCorrect: true
 
@@ -19,13 +24,13 @@ Lint/UnusedMethodArgument:
 
 # Style
 
-Style/AccessModifierIndentation:
+Layout/AccessModifierIndentation:
   EnforcedStyle: outdent
 
 Style/Alias:
   EnforcedStyle: prefer_alias_method
 
-Style/AlignParameters:
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Style/FrozenStringLiteralComment:
@@ -34,7 +39,7 @@ Style/FrozenStringLiteralComment:
 Style/MultilineBlockChain:
   Enabled: false
 
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
 
 Style/PerlBackrefs:
@@ -43,7 +48,7 @@ Style/PerlBackrefs:
 Style/SingleLineBlockParams:
   Enabled: false
 
-Style/SpaceInsideBlockBraces:
+Layout/SpaceInsideBlockBraces:
   SpaceBeforeBlockParameters: false
 
 Style/TrivialAccessors:
@@ -61,7 +66,12 @@ Style/StringLiteralsInInterpolation:
 
 # Having these make it easier to *not* forget to add one when adding a new
 # value and you can simply copy the previous line.
-Style/TrailingCommaInLiteral:
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
   EnforcedStyleForMultiline: comma
 
 Style/TrailingUnderscoreVariable:
@@ -79,7 +89,7 @@ Style/HashSyntax:
 Style/Lambda:
   Enabled: false
 
-Style/DotPosition:
+Layout/DotPosition:
   EnforcedStyle: trailing
 
 Style/EachWithObject:
