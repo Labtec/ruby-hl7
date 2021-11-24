@@ -239,7 +239,7 @@ private
   def choose_segment_from(segment_stack, new_seg, seg_name)
     # Segments have been previously seen
     while segment_stack.length.positive?
-      if segment_stack.last&.has_children? && segment_stack.last&.accepts?(seg_name)
+      if segment_stack.last&.has_children? && segment_stack.last.accepts?(seg_name)
         # If a previous segment can accept the current segment as a child,
         # add it to the previous segments children
         segment_stack.last.children << new_seg
