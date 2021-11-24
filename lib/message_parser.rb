@@ -59,7 +59,7 @@ class HL7::MessageParser
   # parse the provided String or Enumerable object into this message
   def parse_string(instr)
     post_mllp = instr
-    if /\x0b((:?.|\r|\n)+)\x1c\r/ =~ instr
+    if /\x0b((:?.|\r|\n)+)\r\x1c\r/ =~ instr
       post_mllp = $1 # strip the mllp bytes
     end
     HL7::MessageParser.split_by_delimiter(post_mllp, @delimiter.segment)

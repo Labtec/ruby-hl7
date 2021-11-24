@@ -173,7 +173,7 @@ class HL7::Message
   # provide the HL7 spec version of the message wrapped in MLLP
   def to_mllp
     pre_mllp = to_hl7
-    "\v#{pre_mllp}\u001C\r"
+    "\v#{pre_mllp}\r\u001C\r"
   end
 
   # auto-set the set_id fields of any message segments that

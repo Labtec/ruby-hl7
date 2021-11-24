@@ -226,12 +226,12 @@ describe HL7::Message do
 
     it "produces MLLP output" do
       msg = HL7::Message.new(@simple_msh_txt)
-      expect = "\x0b%s\x1c\r" % msg.to_hl7
+      expect = "\x0b%s\r\x1c\r" % msg.to_hl7
       expect(msg.to_mllp).to eq expect
     end
 
     it "parses MLLP input" do
-      raw = format("\x0b%s\x1c\r", @simple_msh_txt)
+      raw = format("\x0b%s\r\x1c\r", @simple_msh_txt)
       msg = HL7::Message.parse(raw)
       expect(msg).not_to be_nil
       expect(msg.to_hl7).to eq @simple_msh_txt
